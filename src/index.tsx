@@ -226,7 +226,7 @@ async function urlToBlob(source: Source): Promise<Blob | undefined> {
 
 const getGoogleReaderUrl = (url: string) =>
   `https://docs.google.com/viewer?url=${url}`
-const getGoogleDriveUrl = (url: string) =>
+const getGoogleDriveUrl = (url?: string) =>
   `https://drive.google.com/viewerng/viewer?embedded=true&url=${url}`
 
 const Loader = () => (
@@ -301,7 +301,7 @@ class PdfReader extends React.Component<Props, State> {
         case 'GOOGLE_DRIVE_VIEWER': {
           break;
         }
-        
+
         case 'URL_TO_BASE64': {
           const data = await fetchPdfAsync(source)
           await writeWebViewReaderFileAsync(
